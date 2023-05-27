@@ -7,7 +7,6 @@ class Section extends Component {
       <div>
         <h2>Please leave feedback</h2>
         <FeedbackOptions />
-        <h2>Statistics</h2>
       </div>
     );
   }
