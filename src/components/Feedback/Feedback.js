@@ -8,12 +8,7 @@ class FeedbackOptions extends Component {
   //   good: PropTypes.number.isRequired,
   //   neutral: PropTypes.number.isRequired,
   //   bad: PropTypes.number.isRequired,
-  // };
-  // state = {
-  //   good: 0,
-  //   neutral: 0,
-  //   bad: 0,
-  // };
+
   onLeaveFeedbackGood = () => {
     this.setState(prevState => ({ good: prevState.good + 1 }));
     console.log(this.state.good);
