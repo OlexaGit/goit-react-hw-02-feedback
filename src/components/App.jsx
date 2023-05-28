@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Section from './Section/Section';
 import Statistics from './Statistics/Statistics';
-// import Notification from './Notification/Notification';
 import FeedbackOptions from './Feedback/Feedback';
 
 export class App extends Component {
@@ -11,14 +10,8 @@ export class App extends Component {
     bad: 0,
   };
 
-  onLeaveFeedbackGood = () => {
-    this.setState(prevState => ({ good: prevState.good + 1 }));
-  };
-  onLeaveFeedbackNeutral = () => {
-    this.setState(prevState => ({ neutral: prevState.neutral + 1 }));
-  };
-  onLeaveFeedbackBad = () => {
-    this.setState(prevState => ({ bad: prevState.bad + 1 }));
+  onLeaveFeedback = item => {
+    this.setState(state => ({ [item]: state[item] + 1 }));
   };
   countTotalFeedback = () => {
     return Object.values(this.state).reduce((previousValue, number) => {
@@ -34,14 +27,9 @@ export class App extends Component {
         <Section title="" />
         <FeedbackOptions
           options={this.state}
-          onLeaveFeedback={
-            (this.onLeaveFeedbackGood, this.onLeaveFeedbackNeutral)
-          }
+          onLeaveFeedback={this.onLeaveFeedback}
         />
-        <button onClick={this.onLeaveFeedbackNeutral}>Neutral</button>
-        <button onClick={this.onLeaveFeedbackBad}>Bad</button>
         <h2>Statistics</h2>
-        {/* <Notification message="There is no feedback" /> */}
         <Statistics
           good={this.state.good}
           neutral={this.state.neutral}
